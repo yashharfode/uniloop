@@ -4,18 +4,18 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBEg0UWweBoxStq4lRLRHizL4Fnf-pHZWQ",
-  authDomain: "uniloop-81eca.firebaseapp.com",
-  projectId: "uniloop-81eca",
-  storageBucket: "uniloop-81eca.firebasestorage.app",
-  messagingSenderId: "298760296488",
-  appId: "1:298760296488:web:7243106dda3865708ebd1d",
-  measurementId: "G-JPCQQ1Y2GF"
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-// Singleton pattern to prevent multiple initializations
+
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-export const appId = 'uniloop-81eca';
+export const appId = process.env.NEXT_PUBLIC_PROJECT_ID;
