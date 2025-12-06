@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Uniloop - Campus Connect",
-  description: "Your all-in-one campus management platform",
+  description: "Your all-in-one campus management platform for events, marketplace, notes, lost & found, and team collaboration",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
@@ -33,31 +33,6 @@ export const viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: "#6366f1",
-};
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-        <Toaster
-          position="bottom-center"
-          containerStyle={{ bottom: '80px' }}
-          containerClassName="md:!bottom-auto md:!top-4 md:!right-4"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-              borderRadius: '12px',
-              padding: '12px 16px',
-            },
-          }}
-        />
-      </body>
-    </html>
-  );
-              }  themeColor: "#6366f1",
 };
 
 export default function RootLayout({ children }) {
@@ -96,4 +71,4 @@ export default function RootLayout({ children }) {
       </body>
     </html>
   );
-}
+              }
