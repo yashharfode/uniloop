@@ -2,14 +2,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 
-// Geist ki jagah Inter font use kar rahe hain jo Next.js 14 me supported hai
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Uniloop - Campus Connect",
-  description: "Your all-in-one campus management platform for events, marketplace, notes, lost & found, and team collaboration",
+  description: "Your all-in-one campus management platform",
   manifest: "/manifest.json",
-  // themeColor yahan se hata diya kyunki ye ab viewport me aata hai
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -35,6 +33,31 @@ export const viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: "#6366f1",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+        <Toaster
+          position="bottom-center"
+          containerStyle={{ bottom: '80px' }}
+          containerClassName="md:!bottom-auto md:!top-4 md:!right-4"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+              borderRadius: '12px',
+              padding: '12px 16px',
+            },
+          }}
+        />
+      </body>
+    </html>
+  );
+              }  themeColor: "#6366f1",
 };
 
 export default function RootLayout({ children }) {
