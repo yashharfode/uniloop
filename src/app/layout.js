@@ -1,22 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Geist ki jagah Inter font use kar rahe hain jo Next.js 14 me supported hai
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Uniloop - Campus Connect",
   description: "Your all-in-one campus management platform for events, marketplace, notes, lost & found, and team collaboration",
   manifest: "/manifest.json",
-  themeColor: "#6366f1",
+  // themeColor yahan se hata diya kyunki ye ab viewport me aata hai
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
@@ -47,9 +40,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={inter.className}>
         {children}
         <Toaster
           position="bottom-center"
