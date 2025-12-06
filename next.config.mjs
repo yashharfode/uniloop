@@ -1,17 +1,17 @@
-/** @type {import('next').NextConfig} */
-import withPWA from 'next-pwa';
+import withPWAInit from 'next-pwa';
 
-const nextConfig = {
-  /* config options here */
-  reactCompiler: true,
-  // Add empty turbopack config to acknowledge Turbopack
-  turbopack: {},
-};
-
-export default withPWA({
+// PWA configuration initialize kar rahe hain
+const withPWA = withPWAInit({
   dest: 'public',
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
-  runtimeCaching: [],
-})(nextConfig);
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true, 
+  // reactCompiler aur turbopack hata diya kyunki wo Next.js 14 me invalid hain
+};
+
+export default withPWA(nextConfig);
