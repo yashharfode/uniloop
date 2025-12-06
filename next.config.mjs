@@ -1,6 +1,5 @@
 import withPWAInit from 'next-pwa';
 
-// PWA configuration initialize kar rahe hain
 const withPWA = withPWAInit({
   dest: 'public',
   register: true,
@@ -10,8 +9,7 @@ const withPWA = withPWAInit({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, 
-  // reactCompiler aur turbopack hata diya kyunki wo Next.js 14 me invalid hain
+  reactStrictMode: true,
 };
 
 export default withPWA(nextConfig);
