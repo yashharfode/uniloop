@@ -1,60 +1,15 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Toaster } from 'react-hot-toast';
+import withPWAInit from 'next-pwa';
 
-const inter = Inter({ subsets: ["latin"] });
+const withPWA = withPWAInit({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NODE_ENV === 'development',
+});
 
-export const metadata = {
-  title: "Uniloop - Campus Connect",
-  description: "Your all-in-one campus management platform",
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "Uniloop",
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-  },
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
 };
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: "#6366f1",
-};
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-        <Toaster
-          position="bottom-center"
-          containerStyle={{ bottom: '80px' }}
-          containerClassName="md:!bottom-auto md:!top-4 md:!right-4"
-          toastOptions={{
-            duration: 3000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-              borderRadius: '12px',
-              padding: '12px 16px',
-            },
-          }}
-        />
-      </body>
-    </html>
-  );
-}
+export default withPWA(nextConfig);
